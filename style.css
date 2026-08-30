@@ -1,0 +1,513 @@
+/* ============================================================
+   1. RESET CSS E INICIALIZACIÓN
+   Elimina estilos por defecto del navegador y normaliza el box model.
+============================================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #22303c;
+    min-height: 100vh;      /* Ocupa al menos toda la altura de la ventana */
+    padding-top: 76px;      /* Compensa la altura del header fijo         */
+    overflow-x: hidden;     /* Elimina cualquier scroll horizontal innecesario */
+    background-color: var(--color-bg);
+}
+
+img,
+video {
+    max-width: 100%;
+    display: block;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================================
+   2. VARIABLES CSS / IDENTIFICACIÓN VISUAL POR COLORES
+   Cada sección tiene un color de fondo único y suave para
+   diferenciar visualmente dónde empieza y termina cada bloque.
+============================================================ */
+:root {
+    /* Colores corporativos suaves por sección */
+    --color-bg:            #f8fafc;  /* Fondo general del body          */
+    --color-header:        #eef2f7;  /* Header                          */
+    --color-header-solid:  #f8fafc;  /* Header al hacer scroll (sólido) */
+    --color-hero:          #e0f2fe;  /* Hero (azul suave)               */
+    --color-services:      #e6f9ec;  /* Servicios (verde suave)         */
+    --color-about:         #fdf3e7;  /* Sobre nosotros (ámbar suave)    */
+    --color-testimonials:  #f1e8fb;  /* Testimonios (lavanda suave)     */
+    --color-contact:       #fee2e6;  /* Contacto (rosa suave)           */
+    --color-footer:        #22303c;  /* Footer (color oscuro)           */
+
+    /* Colores de apoyo */
+    --color-primary:   #2563eb;      /* Azul principal (acciones)       */
+    --color-primary-h: #1d4ed8;      /* Hover del azul principal        */
+    --color-text:      #22303c;      /* Texto principal                 */
+    --color-text-muted: #5b6b7c;     /* Texto secundario                */
+    --color-white:     #ffffff;      /* Tarjetas / fondos claros        */
+
+    /* Medidas y espaciado estándar */
+    --section-padding: 60px 20px;    /* Padding estándar de secciones   */
+    --container-max:   1100px;       /* Ancho máximo del contenido      */
+}
+
+/* ============================================================
+   3. UTILIDADES COMUNES
+============================================================ */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Títulos de sección y texto introductorio */
+.section__title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.section__lead {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+}
+
+.btn--primary:hover {
+    background-color: var(--color-primary-h);
+    transform: translateY(-2px);
+}
+
+.btn--secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn--secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ============================================================
+   4. HEADER: Logo + Navegación
+============================================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    background-color: var(--color-header);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.header.is-scrolled {
+    box-shadow: 0 6px 20px rgba(34, 48, 60, 0.18);
+    background-color: var(--color-header-solid);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 20px;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text);
+}
+
+.header__logo-mark {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.header__nav-list {
+    display: flex;
+    gap: 24px;
+}
+
+.header__nav-link {
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.header__nav-link:hover {
+    color: var(--color-primary);
+}
+
+.header__nav-link.is-active {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* ============================================================
+   5. HERO: Portada de bienvenida
+============================================================ */
+.hero {
+    background-color: var(--color-hero);
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 720px;
+}
+
+.hero__title {
+    font-size: 2.75rem;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.hero__subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 560px;
+}
+
+/* ============================================================
+   6. SERVICIOS: Cuadrícula de 3 tarjetas
+============================================================ */
+.services {
+    background-color: var(--color-services);
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 32px 24px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(34, 48, 60, 0.08);
+}
+
+.card__icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.card__title {
+    font-size: 1.25rem;
+    color: var(--color-text);
+}
+
+.card__text {
+    color: var(--color-text-muted);
+}
+
+/* ============================================================
+   7. SOBRE NOSOTROS: Dos columnas (texto + imagen)
+============================================================ */
+.about {
+    background-color: var(--color-about);
+    padding: var(--section-padding);
+}
+
+.about__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.about__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.about__content p {
+    color: var(--color-text-muted);
+}
+
+.about__media {
+    min-height: 300px;
+    border-radius: 12px;
+    /* Espacio reservado para la imagen de la empresa */
+    background-color: rgba(34, 48, 60, 0.1);
+    border: 2px dashed rgba(34, 48, 60, 0.25);
+    display: grid;
+    place-items: center;
+}
+
+.about__media::after {
+    content: "Imagen de la empresa";
+    color: rgba(34, 48, 60, 0.5);
+    font-weight: 500;
+}
+
+/* ============================================================
+   8. TESTIMONIOS: Sección de credibilidad
+============================================================ */
+.testimonials {
+    background-color: var(--color-testimonials);
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 2rem;
+}
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 24px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(34, 48, 60, 0.08);
+    text-align: left;
+}
+
+.quote__text {
+    font-style: italic;
+    color: var(--color-text);
+}
+
+.quote__author {
+    color: var(--color-text-muted);
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* ============================================================
+   9. CONTACTO: Formulario y datos de contacto
+============================================================ */
+.contact {
+    background-color: var(--color-contact);
+    padding: var(--section-padding);
+}
+
+.contact__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact__details {
+    font-style: normal;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--color-white);
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(34, 48, 60, 0.08);
+}
+
+.contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contact__field label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+
+.contact__field input,
+.contact__field textarea {
+    padding: 10px 12px;
+    border: 1px solid rgba(34, 48, 60, 0.2);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    transition: border-color 0.2s ease;
+}
+
+.contact__field input:focus,
+.contact__field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+/* ============================================================
+   10. FOOTER: Derechos reservados y enlaces secundarios
+============================================================ */
+.footer {
+    background-color: var(--color-footer);
+    color: #cdd7e0;
+    padding: 32px 20px;
+}
+
+.footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.footer__links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer__links a {
+    transition: color 0.2s ease;
+}
+
+.footer__links a:hover {
+    color: var(--color-white);
+}
+
+.footer__copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ============================================================
+   12. ANIMACIONES (reveal al hacer scroll)
+   El ocultado inicial SOLO se aplica cuando el JS está activo
+   (html.js). Si el script no carga, el contenido sigue visible.
+============================================================ */
+html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    filter: blur(8px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1),
+                filter 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* Botón del formulario en estado "enviado" */
+.btn--sent {
+    background-color: #16a34a !important;
+    cursor: default;
+    transform: translateY(0) !important;
+}
+
+/* Respeta la animación cuando el usuario prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    html.js [data-reveal] {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+}
+
+/* ============================================================
+   11. RESPONSIVE: Adaptación a pantallas pequeñas
+============================================================ */
+@media (max-width: 768px) {
+    .header__inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .header__nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .hero__title {
+        font-size: 2rem;
+    }
+
+    .about__inner,
+    .contact__inner {
+        grid-template-columns: 1fr; /* Las columnas pasan a apilarse */
+    }
+
+    .section__title {
+        font-size: 1.6rem;
+    }
+}
