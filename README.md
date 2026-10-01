@@ -4,7 +4,7 @@ Landing page corporativa multipropósito, lista para usar como base de proyectos
 reales. Incluye navegación con scroll-spy, animaciones al hacer scroll, header
 con sombra y formulario con validación nativa.
 
-![Portada](assets/portada.png)
+![Vista principal de la plantilla](assets/portada.png)
 <!-- 👆 Reemplaza esta línea por tu captura. -->
 
 ## 🛠️ Tecnologías
@@ -72,12 +72,15 @@ plantilla-corporativa/
 
 ## 📸 Capturas
 
-| Vista | Imagen |
+**Servicios**
+
+![Servicios](assets/servicios.png)
+
+**Formulario de contacto y vista móvil**
+
+| Formulario | Móvil |
 |---|---|
-| Vista completa | `assets/portada.png` |
-| Servicios | `assets/servicios.png` |
-| Formulario | `assets/contacto.png` |
-| Móvil | `assets/movil.png` |
+| ![Formulario](assets/contacto.png) | ![Móvil](assets/movil.png) |
 
 ## 🔗 Demo en vivo
 
