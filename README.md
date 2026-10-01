@@ -83,21 +83,6 @@ plantilla-corporativa/
 
 [▶ Ver demo](https://lu-capu.github.io/plantilla-corporativa/) · [💻 Ver código](https://github.com/Lu-Capu/plantilla-corporativa)
 
-## 📚 Qué aprendí
-
-- **Patrón BEM** para mantener el CSS legible y evitar colisiones de nombres
-- **Separación de responsabilidades:** una hoja para estilos base y otra
-  únicamente para los `media query`
-- **`IntersectionObserver`** en lugar de eventos `scroll` para detectar la
-  entrada en pantalla, que es más eficiente
-- **`unobserve` tras animar** para que cada elemento se anime una sola vez
-- **Atributos `data-*`** para configurar el comportamiento desde el HTML y no
-  desde el JavaScript
-- **Degradación progresiva:** comprobar el soporte de una API antes de usarla
-- **Formularios nativos:** el navegador ya ofrece validación y mensajes de error
-  accesibles sin una sola línea de código extra
-- **Accesibilidad real:** regiones de la página, `aria-label` y foco visible
-
 ## 🔗 Proyectos derivados
 
 Esta plantilla es la base de:
